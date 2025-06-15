@@ -1,0 +1,82 @@
+ <!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>อรุณสวัสดิ์พี่เณอลิน</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      padding: 10px;
+      margin: 0;
+      -webkit-user-select: none; /* ป้องกันเลือกข้อความโดยไม่ตั้งใจ */
+      user-select: none;
+    }
+    img {
+      width: 50vw;
+      max-width: 200px;
+      margin-top: 20px;
+      user-select: none;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 25px;
+      width: 80vw;
+      max-width: 300px;
+      transition: background-color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      outline: none;
+    }
+    button:hover {
+      background-color: #ff3385;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌅 แอป "morning cherrinn" 🌸</h1>
+  <img src="https://cdn-icons-png.flaticon.com/512/482/482469.png" alt="ดอกกุหลาบ" />
+  <p id="pickup-line">กดปุ่มสิ น้องคนนี้มีอะไรจะบอกพี่ด้วย😉</p>
+  <button id="btn">เริ่มวันใหม่ด้วยรอยยิ้ม 💖</button>
+
+  <script>
+    const lines = [
+      "อรุณสวัสดิ์ ครับตื่นเเล้วช่ายม้ายย😉",
+      "วันนี้อย่าลืมทานข้าวเยอะๆน้าา😘",
+      "อย่าลืมเติมไฟในติกตอกด้วยยย☕️❤️",
+      "ช่วงนี้ฝนตกบ่อยอย่าลืมดูเเลตัวเองด้วยน้าาา🌞",
+      "วันไหนพี่ไม่มีใครอย่าลืมเเชทโง่ๆของผมนะิิ"
+    ];
+
+    let index = 0;
+
+    function generateLine() {
+      console.log('Button clicked');
+      const p = document.getElementById("pickup-line");
+      p.textContent = lines[index];
+      index++;
+      if (index >= lines.length) {
+        index = 0;
+      }
+    }
+
+    // ใช้ eventListener ทั้ง click และ touchstart เผื่อมือถือบางรุ่นไม่จับ click ปกติ
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', generateLine);
+    btn.addEventListener('touchstart', function(e) {
+      e.preventDefault();  // ป้องกัน event ซ้ำซ้อน (click ตามมาอีกที)
+      generateLine();
+    });
+  </script>
+</body>
+</html>
